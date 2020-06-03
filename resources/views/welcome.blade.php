@@ -8,7 +8,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
         <!-- Styles -->
         <style>
             html, body {
@@ -64,7 +63,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height bg-darken-2">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,7 +79,23 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="card center z1 bg-white">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h1>Timeline de fotos</h1>
+                        </div>
+                        <h4 class="card-subtitle">Digite nossa data especial para entrar</h4>
+                    </div>
+                    <div class="card-body">
+                        <form class="form" method="POST" action="{{ route('loginComum') }}">
+                            @csrf
+                            <label class="form-label" for="data">Data</label>
+                            <input class="form-group" id="data" name="data" type="date"><br><br>
+                            <button type="submit" class="btn btn-success">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+                <!--div class="title m-b-md">
                     Laravel
                 </div>
 
@@ -93,7 +108,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div-->
             </div>
         </div>
     </body>

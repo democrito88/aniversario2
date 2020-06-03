@@ -15,9 +15,34 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <script src="{{ asset('/vertical-timeline-master/assets/js/main.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#caminhoImagem').mouseout(function(){
+                var input = this;
+                var url = $(this).val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "webp")) {
+                    var reader = new FileReader();
 
+                    reader.onload = function (e) {
+                        $('#img').attr('src', e.target.result);
+                        $('#img').attr('style', 'display: block;');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+                else{
+                    $('#img').attr('src', '/assets/no_preview.png');
+                }
+            });
+        });
+    </script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/vertical-timeline-master/assets/css/style.css') }}">
+    <link rel="shortcut icon" type="image/ico" href="{{ asset('storage/img/polaroid-pictures-svgrepo-com.ico') }}"/>
 </head>
 <body>
     <div id="app">

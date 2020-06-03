@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LinhaDoTempoController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use function view;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    public function loginComum(){
+        $data = filter_input(INPUT_POST, 'data');
+        
+        if($data == "2015-11-20"){
+            $ldtc = new LinhaDoTempoController();
+            return $ldtc->montaLinhaDoTempo();
+        }else{
+            return view("welcome");
+        }
     }
 }

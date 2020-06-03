@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/loginComum', 'Auth\LoginController@loginComum')->name('loginComum');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'LinhaDoTempoController@montaLinhaDoTempo')->name('home');
 
 Route::resource('cartao/cartao', 'CartaoController');
-Route::get('linhadotempo', 'LinhaDoTempoController@montaLinhaDoTempo');
+Route::get('/linhadotempo', 'LinhaDoTempoController@montaLinhaDoTempo');
